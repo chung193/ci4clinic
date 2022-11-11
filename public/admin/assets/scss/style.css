@@ -1,0 +1,87 @@
+p, h1, h2, h3, h4, h5, h6, th, td {
+  color: #8C97AF; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 20px;
+  font-weight: 600; }
+
+a, i {
+  color: #C3CAD9;
+  text-decoration: none; }
+
+a:hover {
+  color: #2c3e50; }
+
+body {
+  background-color: #F7F8FA; }
+
+.ck-editor__main {
+  min-height: 450px; }
+
+.btn-custorm {
+  background-color: #8833FF;
+  color: white; }
+
+.top-menu {
+  height: 60px; }
+  .top-menu ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none; }
+    .top-menu ul li {
+      display: inline-block;
+      padding: 7px; }
+      .top-menu ul li a {
+        font-weight: 600; }
+  .top-menu input {
+    width: 400px; }
+  .top-menu .btn-outline-secondary, .top-menu .btn-outline-secondary:hover, .top-menu .btn-outline-secondary:focus, .top-menu .btn, .top-menu .btn:hover, .top-menu .btn:focus {
+    position: relative;
+    left: -40px;
+    border: 0;
+    width: 40px;
+    background-color: inherit !important;
+    z-index: 3; }
+
+.header {
+  height: 100px;
+  padding: 26px 0; }
+
+.main-menu {
+  background-color: #F7F8FA;
+  width: 80px;
+  padding: 15px;
+  display: inline-block;
+  position: absolute;
+  height: 100vh; }
+  .main-menu .userimg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; }
+  .main-menu .logout {
+    position: absolute;
+    bottom: 20px; }
+  .main-menu ul {
+    list-style-type: none;
+    padding-left: 0px; }
+    .main-menu ul li a {
+      padding: 5px 10px;
+      border-radius: 5px; }
+    .main-menu ul li a:hover {
+      color: #8833FF;
+      background-color: white; }
+
+.content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.125); }
+  .content .table tr td a {
+    padding-right: 15px; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 25px; }
+
+/*# sourceMappingURL=style.css.map */

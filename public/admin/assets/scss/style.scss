@@ -1,0 +1,125 @@
+p, h1, h2, h3, h4, h5, h6, th, td{
+    color: #8C97AF;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+a, i{
+    color: #C3CAD9;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #2c3e50
+}
+
+body{
+    background-color: #F7F8FA;
+}
+
+.btn-custorm{
+    background-color:#8833FF;
+    color:white
+}
+
+.top-menu{
+    height: 60px;
+    ul{
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style-type: none;
+        li{
+            display: inline-block;
+            padding: 7px;
+            a{
+                font-weight: 600;
+            }
+        }
+    }
+
+    input{
+        width: 400px;
+    }
+    .btn-outline-secondary, .btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn, .btn:hover, .btn:focus{
+        position: relative;
+        left: -40px;
+        border: 0;
+        width: 40px;
+        background-color: inherit !important;
+        z-index: 3;
+    }
+    
+}
+
+.header{
+    height: 100px;
+    padding: 26px 0;
+}
+
+.main-menu{
+    background-color: #F7F8FA;
+    width: 80px;
+    padding: 15px;
+    display: inline-block;
+    position: absolute;
+    height: 100vh;
+    .userimg{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .logout{
+        position: absolute;
+        bottom: 20px;
+    }
+
+    ul{
+        list-style-type: none;
+        padding-left:0px;
+        li{
+            
+            a{
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+
+            a:hover{
+                color: #8833FF;
+                background-color: white;
+            }
+        }
+    }
+}
+
+.content{
+    //margin-left: 80px;
+    padding: 20px;
+    //display: inline-block;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.125);
+    .table{
+        tr{
+            td{
+                a{
+                    padding-right: 15px;
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    height: 25px;
+}
+
+.seo-block{
+    // position: fixed;
+    // left:0;
+}
