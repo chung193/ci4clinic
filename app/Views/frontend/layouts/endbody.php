@@ -130,6 +130,7 @@
 <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/dt-doctor-addon-v85acd233516ccde381045356b4991d52a34c5bfe.js" id="dt-doctor-addon-js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/dt-fbpixel-script-v1f25bd8c6e762d303db59d9ce03e6be78e845624.js" id="dt-fbpixel-script-js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/js.cookie.min.js" id="js-cookie-js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" id="woocommerce-js-extra">
    /* <![CDATA[ */
    var woocommerce_params = {
@@ -246,78 +247,138 @@
 <div id="lbdictex_ask_mark" class="hidden" style="position: absolute; top: 0px; left: 0px;">
    <a class="lbdictex_ask_select" href="https://dtdental.wpengine.com/home-page-1-2/#">&nbsp;</a>
 </div>
-<script>
-   jQuery('.carousel').carousel();
-   function showResult(str) {
-  if (str.length==0) {
-      // var ele = document.getElementById("livesearch");
-      // removeAllChildNodes(ele);
-      document.getElementById("livesearch").innerHTML="";
-      document.getElementById("livesearch").style.border="0px";
-      document.getElementById("livesearch").style.padding="0px";
-      return;
-  }
-  
-  var xmlhttp=new XMLHttpRequest();
-  xmlhttp.onreadystatechange=function() {
-      if (this.readyState==4 && this.status==200) {
-
-          var response = this.responseText;
-          response = response.replace(/\\n/g, "\\n")  
-             .replace(/\\'/g, "\\'")
-             .replace(/\\"/g, '\\"')
-             .replace(/\\&/g, "\\&")
-             .replace(/\\r/g, "\\r")
-             .replace(/\\t/g, "\\t")
-             .replace(/\\b/g, "\\b")
-             .replace(/\\f/g, "\\f");
-          // remove non-printable and other non-valid JSON chars
-          response = response.replace(/[\u0000-\u0019]+/g,""); 
-          response = JSON.parse(response);
-          
-          if(typeof(response) == 'object'){
-              response.forEach(showitem, removeAllChildNodes(document.getElementById("livesearch")));
-          }else{
-                  if(typeof(response) == 'string'){
-                      shownotfound(response, removeAllChildNodes(document.getElementById("livesearch")));
-                  }
-          }
+<script type="text/javascript">
+   jQuery(document).ready(function($) {
+      if (typeof jQuery('.ult-carousel').slick == "function") {
+         $('.ult-carousel').slick({
+            dots: !0,
+            autoplay: !0,
+            autoplaySpeed: 5000,
+            speed: 300,
+            infinite: !0,
+            arrows: !1,
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            swipe: !0,
+            draggable: !0,
+            touchMove: !0,
+            pauseOnHover: !0,
+            pauseOnFocus: !1,
+            responsive: [{
+               breakpoint: 1026,
+               settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+               }
+            }, {
+               breakpoint: 1025,
+               settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+               }
+            }, {
+               breakpoint: 760,
+               settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+               }
+            }],
+            pauseOnDotsHover: !0,
+            customPaging: function(slider, i) {
+               return '<i type="button" style= "color:#ffffff;" class="ultsl-stop" data-role="none"></i>'
+            },
+         })
       }
-  }
-  xmlhttp.open("GET","<?= base_url()?>/livesearch/"+str,true);
-  xmlhttp.send();
-  }
-  function shownotfound(response){
+   })
+</script>
+<script>
+   jQuery(document).ready(function() {
+      jQuery(".owl-carousel").owlCarousel({
+         loop: true,
+         margin: 10,
+         responsive: {
+            0: {
+               items: 1
+            },
+            600: {
+               items: 2
+            },
+            1000: {
+               items: 3
+            }
+         }
+      });
+   });
+   // jQuery('.carousel').carousel();
+   function showResult(str) {
+      if (str.length == 0) {
+         // var ele = document.getElementById("livesearch");
+         // removeAllChildNodes(ele);
+         document.getElementById("livesearch").innerHTML = "";
+         document.getElementById("livesearch").style.border = "0px";
+         document.getElementById("livesearch").style.padding = "0px";
+         return;
+      }
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+
+            var response = this.responseText;
+            response = response.replace(/\\n/g, "\\n")
+               .replace(/\\'/g, "\\'")
+               .replace(/\\"/g, '\\"')
+               .replace(/\\&/g, "\\&")
+               .replace(/\\r/g, "\\r")
+               .replace(/\\t/g, "\\t")
+               .replace(/\\b/g, "\\b")
+               .replace(/\\f/g, "\\f");
+            // remove non-printable and other non-valid JSON chars
+            response = response.replace(/[\u0000-\u0019]+/g, "");
+            response = JSON.parse(response);
+
+            if (typeof(response) == 'object') {
+               response.forEach(showitem, removeAllChildNodes(document.getElementById("livesearch")));
+            } else {
+               if (typeof(response) == 'string') {
+                  shownotfound(response, removeAllChildNodes(document.getElementById("livesearch")));
+               }
+            }
+         }
+      }
+      xmlhttp.open("GET", "<?= base_url() ?>/livesearch/" + str, true);
+      xmlhttp.send();
+   }
+
+   function shownotfound(response) {
       const a = document.createElement('p');
       var linkText = document.createTextNode(response);
       a.appendChild(linkText);
       document.getElementById("livesearch").appendChild(a);
-      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
-      document.getElementById("livesearch").style.padding="10px";
-  }
+      document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+      document.getElementById("livesearch").style.padding = "10px";
+   }
 
-  function showitem(item, index){
-      var base_url = '<?= base_url()?>';
+   function showitem(item, index) {
+      var base_url = '<?= base_url() ?>';
       const a = document.createElement('a');
       var linkText = document.createTextNode(item.title);
       a.appendChild(linkText);
       a.title = item.title;
-      a.href = base_url+'/bai-viet/'+item.slug;
+      a.href = base_url + '/bai-viet/' + item.slug;
       document.getElementById("livesearch").appendChild(a);
-      document.getElementById("livesearch").style.border="1px solid #e5e5e5";
-      document.getElementById("livesearch").style.padding="10px";
-  }
+      document.getElementById("livesearch").style.border = "1px solid #e5e5e5";
+      document.getElementById("livesearch").style.padding = "10px";
+   }
 
-  function removeAllChildNodes(parent) {
+   function removeAllChildNodes(parent) {
       while (parent.firstChild) {
-          parent.removeChild(parent.firstChild);
+         parent.removeChild(parent.firstChild);
       }
-  }
+   }
 
-  x=document.getElementsByClassName("toc-title");  // Find the elements
-  for(var i = 0; i < x.length; i++){
-    x[i].innerText="Mục lục";    // Change the content
-  }
+   x = document.getElementsByClassName("toc-title"); // Find the elements
+   for (var i = 0; i < x.length; i++) {
+      x[i].innerText = "Mục lục"; // Change the content
+   }
 </script>
-
-

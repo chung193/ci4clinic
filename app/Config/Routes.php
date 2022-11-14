@@ -52,44 +52,34 @@ $routes->group('manage', ['filter' => 'auth'], function ($routes) {
     // dashboard
     $routes->get('dashboard', 'manage/Dashboard::index');
 
-    // crawl
-    $routes->get('crawl', 'manage/Crawl::index');
-    $routes->post('crawl', 'manage/Crawl::index');
 
     $routes->get('crawl/post', 'manage/Crawl::post');
     $routes->post('crawl/post', 'manage/Crawl::post');
-    // customer
-    $routes->get('customer', 'manage\Customer::index');
+
+    // location
+    $routes->get('location', 'manage\Location::index');
+
+    // pagecat
+    $routes->get('pagecat', 'manage\PageCat::index');
 
     // customer
-    $routes->get('order', 'manage\ShopOrder::index');
+    $routes->get('customer', 'manage\Customer::index');
 
     // banner
      $routes->get('banner', 'manage\Banner::index');
 
-    // discount
-    $routes->get('discount', 'manage\Discount::index');
-    
     // category
     $routes->get('category', 'manage\Category::index');
 
-    // shop-info
-    $routes->get('shop-info', 'manage\ShopInfo::index');
+    // info
+    $routes->get('info', 'manage\Info::index');
 
-    // shop-ui
-    $routes->get('shop-ui', 'manage\ShopUi::index');
+    // ui
+    $routes->get('ui', 'manage\Ui::index');
 
-    // shop-slider
-    $routes->get('shop-slider', 'manage\ShopSlider::index');
+    //-slider
+    $routes->get('slider', 'manage\Slider::index');
 
-    // shop-producer
-    $routes->get('shop-producer', 'manage\ShopProducer::index');
-
-    // shop category
-    $routes->get('shop-category', 'manage\ShopCategory::index');
-
-    // shop product
-    $routes->get('shop-product', 'manage\ShopProduct::index');
 
     // post
     $routes->get('post', 'manage\Post::index');
@@ -111,19 +101,19 @@ $routes->group('manage', ['filter' => 'auth'], function ($routes) {
 
 $routes->group('manage', ['filter' => 'role'], function ($routes) {
 
-     // order
-     $routes->add('order/detail/(:num)', 'manage\ShopOrder::detail/$1');
-     $routes->get('order/add', 'manage\ShopOrder::add');
-     $routes->post('order/save', 'manage\ShopOrder::save');
-     $routes->post('order/update', 'manage\ShopOrder::update');
-     $routes->get('order/delete/(:num)', 'manage\ShopOrder::delete');
+    // location
+    $routes->add('pagecat/edit/(:num)', 'manage\PageCat::edit/$1');
+    $routes->get('pagecat/add', 'manage\PageCat::add');
+    $routes->post('pagecat/save', 'manage\PageCat::save');
+    $routes->post('pagecat/update', 'manage\PageCat::update');
+    $routes->get('pagecat/delete/(:num)', 'manage\PageCat::delete/$1');
 
-    // customer
-    $routes->add('customer/edit/(:num)', 'manage\Customer::edit/$1');
-    $routes->get('customer/add', 'manage\Customer::add');
-    $routes->post('customer/save', 'manage\Customer::save');
-    $routes->post('customer/update', 'manage\Customer::update');
-    $routes->get('customer/delete/(:num)', 'manage\Customer::delete/$1');
+    // location
+    $routes->add('location/edit/(:num)', 'manage\Location::edit/$1');
+    $routes->get('location/add', 'manage\Location::add');
+    $routes->post('location/save', 'manage\Location::save');
+    $routes->post('location/update', 'manage\Location::update');
+    $routes->get('location/delete/(:num)', 'manage\Location::delete/$1');
 
      // banner
      $routes->add('banner/edit/(:num)', 'manage\Banner::edit/$1');
@@ -132,12 +122,7 @@ $routes->group('manage', ['filter' => 'role'], function ($routes) {
      $routes->post('banner/update', 'manage\Banner::update');
      $routes->get('banner/delete/(:num)', 'manage\Banner::delete/$1');
 
-     // discount
-     $routes->add('discount/edit/(:num)', 'manage\Discount::edit/$1');
-     $routes->get('discount/add', 'manage\Discount::add');
-     $routes->post('discount/save', 'manage\Discount::save');
-     $routes->post('discount/update', 'manage\Discount::update');
-     $routes->get('discount/delete/(:num)', 'manage\Discount::delete/$1');
+    
 
 
     // category
@@ -147,48 +132,26 @@ $routes->group('manage', ['filter' => 'role'], function ($routes) {
     $routes->post('category/update', 'manage\Category::update');
     $routes->get('category/delete/(:num)', 'manage\Category::delete/$1');
 
-    // shop_info
-    $routes->add('shop-info/edit/(:num)', 'manage\ShopInfo::edit/$1');
-    $routes->get('shop-info/add', 'manage\ShopInfo::add');
-    $routes->post('shop-info/save', 'manage\ShopInfo::save');
-    $routes->post('shop-info/update', 'manage\ShopInfo::update');
-    $routes->get('shop-info/delete/(:num)', 'manage\ShopInfo::delete/$1');
+    // 
+    $routes->add('info/edit/(:num)', 'manage\Info::edit/$1');
+    $routes->get('info/add', 'manage\Info::add');
+    $routes->post('info/save', 'manage\Info::save');
+    $routes->post('info/update', 'manage\Info::update');
+    $routes->get('info/delete/(:num)', 'manage\Info::delete/$1');
 
     // shop_slider
-    $routes->add('shop-slider/edit/(:num)', 'manage\ShopSlider::edit/$1');
-    $routes->get('shop-slider/add', 'manage\ShopSlider::add');
-    $routes->post('shop-slider/save', 'manage\ShopSlider::save');
-    $routes->post('shop-slider/update', 'manage\ShopSlider::update');
-    $routes->get('shop-slider/delete/(:num)', 'manage\ShopSlider::delete/$1');
+    $routes->add('slider/edit/(:num)', 'manage\Slider::edit/$1');
+    $routes->get('slider/add', 'manage\Slider::add');
+    $routes->post('slider/save', 'manage\Slider::save');
+    $routes->post('slider/update', 'manage\Slider::update');
+    $routes->get('slider/delete/(:num)', 'manage\Slider::delete/$1');
 
     // shop_ui
-    $routes->add('shop-ui/edit/(:num)', 'manage\ShopUi::edit/$1');
-    $routes->get('shop-ui/add', 'manage\ShopUi::add');
-    $routes->post('shop-ui/save', 'manage\ShopUi::save');
-    $routes->post('shop-ui/update', 'manage\ShopUi::update');
-    $routes->get('shop-ui/delete/(:num)', 'manage\ShopUi::delete/$1');
-
-    // shop_category
-    $routes->add('shop-category/edit/(:num)', 'manage\ShopCategory::edit/$1');
-    $routes->get('shop-category/add', 'manage\ShopCategory::add');
-    $routes->post('shop-category/save', 'manage\ShopCategory::save');
-    $routes->post('shop-category/update', 'manage\ShopCategory::update');
-    $routes->get('shop-category/delete/(:num)', 'manage\ShopCategory::delete/$1');
-
-     // producer
-     $routes->add('shop-producer/edit/(:num)', 'manage\ShopProducer::edit/$1');
-     $routes->get('shop-producer/add', 'manage\ShopProducer::add');
-     $routes->post('shop-producer/save', 'manage\ShopProducer::save');
-     $routes->post('shop-producer/update', 'manage\ShopProducer::update');
-     $routes->get('shop-producer/delete/(:num)', 'manage\ShopProducer::delete/$1');
-
-    // shop-product
-    $routes->add('shop-product/edit/(:num)', 'manage\ShopProduct::edit/$1');
-    $routes->get('shop-product/add', 'manage\ShopProduct::add');
-    $routes->post('shop-product/save', 'manage\ShopProduct::save');
-    $routes->post('shop-product/update', 'manage\ShopProduct::update');
-    $routes->get('shop-product/delete/(:num)', 'manage\ShopProduct::delete/$1');
-
+    $routes->add('ui/edit/(:num)', 'manage\Ui::edit/$1');
+    $routes->get('ui/add', 'manage\Ui::add');
+    $routes->post('ui/save', 'manage\Ui::save');
+    $routes->post('ui/update', 'manage\Ui::update');
+    $routes->get('ui/delete/(:num)', 'manage\Ui::delete/$1');
 
     // page
     $routes->get('page/add', 'manage\Page::add');
@@ -214,42 +177,20 @@ $routes->group('manage', ['filter' => 'role'], function ($routes) {
 $routes->get('/', 'frontend/Home::index');
 // Bài viết và trang
 
+// Đăng ký nhận email
+$routes->post('/sub', 'frontend/Sub::save');
+
+// Đăng ký lịch khám
+$routes->post('/book', 'frontend/Book::save');
+
 // chuyen muc
 $routes->get('/danh-muc/(:any)', 'frontend\Category::index/$1');
 // bai viet
 $routes->get('/bai-viet/(:any)', 'frontend\Post::index/$1');
 
-
-
-// Khach hang
-$routes->get('/khach-hang/dang-ky', 'frontend\Customer::register');
-$routes->get('/khach-hang/dang-nhap', 'frontend\Customer::login');
-$routes->get('/khach-hang/dang-xuat', 'frontend\Customer::logout');
-
-$routes->post('/khach-hang/xac-thuc', 'frontend\Customer::auth');
-$routes->post('/khach-hang/luu-thong-tin', 'frontend\Customer::save');
-
-// sản phẩm
-// danh mục
-$routes->get('/danh-muc-san-pham/(:any)', 'frontend\ShopCategory::index/$1');
-// chi tiết sản phẩm
-// giỏ hàng
-$routes->post('/gio-hang/them-vao-gio', 'frontend\ShopCart::addcart');
-$routes->get('/gio-hang/xoa-khoi-gio', 'frontend\ShopCart::removeitem');
-$routes->post('/gio-hang/cap-nhat-gio', 'frontend\ShopCart::updateitem');
-$routes->get('/gio-hang/lay-gio-hang', 'frontend\ShopCart::getcart');
-$routes->get('/gio-hang', 'frontend\ShopCart::index');
-$routes->get('/gio-hang/xoa-gio-hang', 'frontend\ShopCart::deletecart');
-$routes->get('/gio-hang/dem-gio-hang', 'frontend\ShopCart::countcart');
-
-$routes->get('/gio-hang/checkout', 'frontend\ShopCart::checkout');
-$routes->post('/gio-hang/hoan-tat', 'frontend\ShopCart::order_info');
-
-$routes->get('/san-pham/(:segment)', 'frontend\ShopProduct::index/$1');
-
 // khuyến mại
-$routes->get('/khuyen-mai/', 'frontend\ShopDiscount::index');
-$routes->get('/khuyen-mai/(:segment)', 'frontend\ShopDiscount::index/$1');
+$routes->get('/khuyen-mai/', 'frontend\Discount::index');
+$routes->get('/khuyen-mai/(:segment)', 'frontend\Discount::index/$1');
 
 // tìm kiếm
 $routes->get('/search/', 'frontend\Home::search');
@@ -257,51 +198,8 @@ $routes->get('/search/', 'frontend\Home::search');
 // trang
 $routes->get('/(:segment)', 'frontend\Page::index/$1');
 
-
-// đăng nhập
-// checkout
-// xác nhận đặt hàng
-
 $routes->get('/livesearch/(:any)', 'frontend\Home::livesearch/$1');
 
-$routes->group('api', function ($routes) {
-    // category 
-    $routes->get('category', 'api\Client::category');
-    $routes->get('category/(:segment)', 'api\Client::category/$1');
-
-    // post 
-    $routes->get('post', 'api\Client::post');
-    $routes->get('post/(:segment)', 'api\Client::post/$1');
-
-    // shop-category 
-    $routes->get('catalog', 'api\Client::catalog');
-    $routes->get('catalog/(:segment)', 'api\Client::catalog/$1');
-
-    // product 
-    $routes->get('product', 'api\Client::product');
-    $routes->get('product/(:segment)', 'api\Client::product/$1');
-    $routes->get('product/catalog/(:segment)', 'api\Client::catalog_product/$1');
- 
-    // auth 
-    $routes->post('auth/login', 'api\Auth::login');
-    $routes->post('auth/register', 'api\Auth::register');
-    $routes->get('me', 'api\Auth::me');
-});
-
-$routes->group('api/manage',  ['filter' => 'api'], function ($routes) {
-    $routes->get('me', 'api\Auth::me');
-    $routes->resource('category', ['controller' => 'api\Category']);
-    $routes->resource('post', ['controller' => 'api\Post']);
-    $routes->resource('catalog', ['controller' => 'api\Catalog']);
-    $routes->resource('product', ['controller' => 'api\Product']);
-    $routes->resource('staff', ['controller' => 'api\Staff']);
-    $routes->resource('reason', ['controller' => 'api\Reason']);
-    $routes->resource('status', ['controller' => 'api\Status']);
-    // $routes->resource('post', ['controller' => 'api\Client']);
-    // $routes->resource('catalog', ['controller' => 'api\Client']);
-    // $routes->resource('product', ['controller' => 'api\Client']);
-});
-// $routes->get('/(:segment)', 'frontend\Home::findcontent/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

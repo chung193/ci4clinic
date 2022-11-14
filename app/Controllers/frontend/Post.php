@@ -9,6 +9,10 @@ use App\Models\frontend\Banner_model;
 use App\Models\frontend\Option_model;
 use App\Models\frontend\Category_model;
 use App\Models\frontend\Post_model;
+use App\Models\frontend\Location_model;
+use App\Models\frontend\Book_model;
+use App\Models\frontend\Page_model;
+use App\Models\frontend\PageCat_model;
 
 
 class Post extends BaseController
@@ -23,20 +27,26 @@ class Post extends BaseController
         $option_md = new Option_model();
         $category_md = new Category_model();
         $post_md = new Post_model();
+        $location_md = new Location_model();
+        $page_md = new Page_model();
+        $pagecat_md = new PageCat_model();
+
         $this->base = array(
             'ui' => $ui_md->getUi(),
             'info' => $info_md->getInfo(),
             'slider' => $slider_md->getSlider(),
             'category' => $category_md->getCategory(),
             'post' => $post_md->getPost(),
-            // arrivals product in homepage
+            'page' => $page_md->getPage(),
+            'pagecat' => $pagecat_md->getpagecat(),
             'menu' => $category_md->getCategory(),
             'banner' => $banner_md->getbanner(),
+            'location' => $location_md->getlocation(),
             'seo' => array_column($option_md->getOptions(), null, "name") 
         );    
         //print_r($this->base['option']); die();
         $this->session = \Config\Services::session();
-        $this->session->start(); 
+        $this->session->start();
     }
     
     public function index($slug)
@@ -51,9 +61,11 @@ class Post extends BaseController
             'subview'   => '/frontend/contents/post/post',
             'title'     => $post->title,
             'post' => $post,
+            'cat' => $post_md->getPostCatCount(),
             'recent_post' => $recent,
             'base' => $this->base
         );
+
         
         echo view('frontend/layout',$data);
     }

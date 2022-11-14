@@ -46,6 +46,28 @@ if (!function_exists('price_format')) {
     }
 }
 
+if (!function_exists('check_child_array')) {
+    function check_child_array($id, $arr)
+    {
+        foreach($arr as $val){
+            if($val['parent_id'] == $id)
+                return 1;
+        }
+        return 0;
+    }
+}
+
+if (!function_exists('check_child_array_page')) {
+    function check_child_array_page($id, $arr)
+    {
+        foreach($arr as $val){
+            if($val['cat_id'] == $id)
+                return 1;
+        }
+        return 0;
+    }
+}
+
 // search name product
 if (!function_exists('search_text')) {
     function search_text($string, $text)

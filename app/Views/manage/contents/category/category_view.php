@@ -29,7 +29,7 @@
         <thead>
             <tr>
                 <th>Tên danh mục</th>
-                <th>Mô tả</th>
+                <th>url</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -39,7 +39,7 @@
                     echo '
                     <tr>
                         <td>'.$val['title'].'</td>
-                        <td>'.$val['content'].'</td>
+                        <td>'.$val['slug'].'</td>
                         <td>
                             <a href="'.base_url().'/manage/category/edit/'.$val['id'].'" class="text-info">Edit</a>
                             <a href="'.base_url().'/manage/category/delete/'.$val['id'].'" class="text-danger">Delete</a>

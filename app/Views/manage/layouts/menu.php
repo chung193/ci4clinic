@@ -73,6 +73,12 @@
                   <p>Danh mục</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url()?>/manage/crawl/post" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crawl</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -85,6 +91,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url()?>/manage/pagecat" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="<?php echo base_url()?>/manage/page" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -100,10 +112,6 @@
              
             </ul>
           </li>
-
-          
-          
-          
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -131,7 +139,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url()?>/manage/shop-ui" class="nav-link">
+            <a href="<?php echo base_url()?>/manage/ui" class="nav-link">
               <i class="nav-icon  fas fa-image"></i>
               <p>
                 Giao diện
@@ -142,7 +150,7 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="<?php echo base_url()?>/manage/shop-slider" class="nav-link">
+                <a href="<?php echo base_url()?>/manage/slider" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>
                     Slider
@@ -150,7 +158,7 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo base_url()?>/manage/banner" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>
@@ -161,14 +169,14 @@
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo base_url()?>/manage/shop-ui" class="nav-link">
+                <a href="<?php echo base_url()?>/manage/ui" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>
                     UI
                     
                   </p>
                 </a>
-              </li>
+              </li> -->
 
             </ul>
           </li>
@@ -176,25 +184,15 @@
           
 
           <li class="nav-item">
-            <a href="<?php echo base_url()?>/manage/shop-info" class="nav-link">
+            <a href="<?php echo base_url()?>/manage/info" class="nav-link">
               <i class="nav-icon fas fa-info"></i>
               <p>
-                Thông tin cửa hàng
+                Thông tin phòng khám
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a href="<?php echo base_url()?>/manage/discount" class="nav-link">
-              <i class="nav-icon fas fa-percentage"></i>
-              <p>
-               Khuyến mại
-                <!-- <i class="fas fa-angle-left right"></i> -->
-              </p>
-            </a>
-          </li>
-
+          
           <li class="nav-item">
             <a href="<?php echo base_url()?>/manage/options" class="nav-link">
               <i class="nav-icon fas fa-wrench"></i>

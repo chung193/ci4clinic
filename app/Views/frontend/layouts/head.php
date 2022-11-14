@@ -64,6 +64,10 @@
       text-align: center
     }
 
+    a:hover{
+      text-decoration:none
+    }
+
     .is-dark-theme .wp-block-audio figcaption {
       color: hsla(0, 0%, 100%, .65)
     }
@@ -823,46 +827,46 @@
   <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/ultimate_bg.min.js" id="ultimate-row-bg-js"></script>
   <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/modernizr-custom-vd07d740953aa28decae3a0db1cedea4bd461ee8e.js" id="modernizr-custom-js"></script>
   <link rel="canonical" href="https://dtdental.wpengine.com/home-page-1-2/">
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     var ajaxurl = 'https://dtdental.wpengine.com/wp-admin/admin-ajax.php'
-  </script>
+  </script> -->
   <meta name="tec-api-version" content="v1">
   <meta name="tec-api-origin" content="https://dtdental.wpengine.com">
   <link rel="https://theeventscalendar.com/" href="https://dtdental.wpengine.com/wp-json/tribe/events/v1/">
   <script type="text/javascript">
-    var jQueryMigrateHelperHasSentDowngrade = !1;
-    window.onerror = function(msg, url, line, col, error) {
-      if (jQueryMigrateHelperHasSentDowngrade) {
-        return !0
-      }
-      var xhr = new XMLHttpRequest();
-      var nonce = '5f2eba30c8';
-      var jQueryFunctions = ['andSelf', 'browser', 'live', 'boxModel', 'support.boxModel', 'size', 'swap', 'clean', 'sub', ];
-      var match_pattern = /\)\.(.+?) is not a function/;
-      var erroredFunction = msg.match(match_pattern);
-      if (typeof erroredFunction !== 'object' || typeof erroredFunction[1] === "undefined" || -1 === jQueryFunctions.indexOf(erroredFunction[1])) {
-        return !0
-      }
-      jQueryMigrateHelperHasSentDowngrade = !0;
-      xhr.open('POST', 'https://dtdental.wpengine.com/wp-admin/admin-ajax.php');
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.onload = function() {
-        var response, reload = !1;
-        if (200 === xhr.status) {
-          try {
-            response = JSON.parse(xhr.response);
-            reload = response.data.reload
-          } catch (e) {
-            reload = !1
-          }
-        }
-        if (reload) {
-          location.reload()
-        }
-      };
-      xhr.send(encodeURI('action=jquery-migrate-downgrade-version&_wpnonce=' + nonce));
-      return !0
-    }
+    // var jQueryMigrateHelperHasSentDowngrade = !1;
+    // window.onerror = function(msg, url, line, col, error) {
+    //   if (jQueryMigrateHelperHasSentDowngrade) {
+    //     return !0
+    //   }
+    //   var xhr = new XMLHttpRequest();
+    //   var nonce = '5f2eba30c8';
+    //   var jQueryFunctions = ['andSelf', 'browser', 'live', 'boxModel', 'support.boxModel', 'size', 'swap', 'clean', 'sub', ];
+    //   var match_pattern = /\)\.(.+?) is not a function/;
+    //   var erroredFunction = msg.match(match_pattern);
+    //   if (typeof erroredFunction !== 'object' || typeof erroredFunction[1] === "undefined" || -1 === jQueryFunctions.indexOf(erroredFunction[1])) {
+    //     return !0
+    //   }
+    //   jQueryMigrateHelperHasSentDowngrade = !0;
+    //   xhr.open('POST', 'https://dtdental.wpengine.com/wp-admin/admin-ajax.php');
+    //   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //   xhr.onload = function() {
+    //     var response, reload = !1;
+    //     if (200 === xhr.status) {
+    //       try {
+    //         response = JSON.parse(xhr.response);
+    //         reload = response.data.reload
+    //       } catch (e) {
+    //         reload = !1
+    //       }
+    //     }
+    //     if (reload) {
+    //       location.reload()
+    //     }
+    //   };
+    //   xhr.send(encodeURI('action=jquery-migrate-downgrade-version&_wpnonce=' + nonce));
+    //   return !0
+    // }
   </script>
   <noscript>
     <style>
@@ -1647,6 +1651,9 @@
       padding: 0;
     }
 
+    .aio-icon-title{
+      text-transform: uppercase;
+    }
     .fluid-width-video-wrapper iframe,
     .fluid-width-video-wrapper object,
     .fluid-width-video-wrapper embed {
@@ -1655,6 +1662,21 @@
       left: 0;
       width: 100%;
       height: 100%;
+    }
+    .dt-sc-image-wrapper{
+      height: 250px;
+    }
+    .dt-sc-image-wrapper img{
+        width:100%;
+        height:auto;
+    }
+
+    .dt-sc-team-thumb{
+      height: 300px
+    }
+    .dt-sc-team-thumb img{
+      width:100%;
+      height:auto;
     }
   </style>
   <style>
@@ -1738,5 +1760,53 @@
     @media (max-width: 479px) {}
 
     /** Ultimate: Tooltipster Responsive - **/
+
+    
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    
+
+      .owl-dots .active span, .owl-dots .owl-dot span:hover{
+        background-color: #00bcd5 !important;
+      }
+
+      .owl-dots{
+        display: flex;
+        justify-content: center;
+      }
+
+      .owl-theme .owl-dots .owl-dot span {
+          
+          background: #aceefe;
+
+      }
+
+      #Info-list-wrap-6533 h3{
+        line-height: 30px !important;
+      }
+      .hotline{
+        width:100%;
+        border-radius: 5px;
+        background-color: #00a0b4;
+        color:white;
+      }
+
+
+      .hotline a{
+        display:block;
+        line-height: 26px;
+        color:white;
+        padding: 15px 30px 15px 20px;
+      }
+
+      .menu-item .book{
+        padding: 15px; background: #00bcd5;color:white;border-radius: 5px;width:auto;color:white !important;line-height: 20px !important;
+      }
+      .menu-item .book:hover{
+        background:#00ac4f;
+      }
   </style>
 </head>

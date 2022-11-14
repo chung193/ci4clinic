@@ -22,6 +22,16 @@ class Post_model extends Model
         return $query->getRow();
     }
 
+    public function getPostCatCount(){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('category');
+        $builder->select('category.*, count(post.id) as num');
+        $builder->join('post','category.id = post.parentid');
+        $builder->groupBy('category.id');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
     public function getPostIdSlug($slug){
         $db      = \Config\Database::connect();
         $builder = $db->table('post');

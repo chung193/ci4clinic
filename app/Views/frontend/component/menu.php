@@ -44,64 +44,60 @@
 
 
             <?php
-
-            foreach ($base['category'] as $val) {
-                if ($val['show_in_menu']) {
-                    echo '
-                        <li id="menu-item-8287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-depth-0 with-box-shadow  menu-item-simple-parent ">
-                            <a href="' . base_url() . '/danh-muc/' . $val['slug'] . '">' . $val['title'] . '</a>
-                        <ul class="sub-menu ">
-                     ';
-                    foreach ($base['post'] as $value) {
-                        if ($value['parentid'] == $val['id']) {
-                                echo '<li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1">
-                                <a href="' . base_url() . '/bai-viet/' . $value['slug'] . '">' . $value['title'] . '</a>
-                                </li>';
-                            }
-                        }
-                        echo '</ul>
-                        <a class="dt-menu-expand" href="javascript:void(0)">+</a>
-                       </li>';
-                    }
-                }
             
 
-            foreach ($base['menu'] as $val) {
-                if ($val['parent_id'] == 0 && $val['show_in_menu'] == 0) {
-                    foreach ($base['menu'] as $row) {
-                        $flag = false;
-                        if ($row['parent_id'] == $val['id'] && $val['show_in_menu'] == 0) {
-                            $flag = true;
-                            break;
+            foreach ($base['category'] as $val) {
+                if(check_child_array($val['id'],$base['category'])){
+                    echo '
+                    <li id="menu-item-8287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-depth-0 with-box-shadow  menu-item-simple-parent ">
+                        <a href="' . base_url() . '/danh-muc/' . $val['slug'] . '">' . $val['title'] . '</a>
+                    <ul class="sub-menu ">
+                 ';
+                foreach ($base['category'] as $value) {
+                    if ($value['parent_id'] == $val['id']) {
+                            echo '<li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1">
+                            <a href="' . base_url() . '/danh-muc/' . $value['slug'] . '">' . $value['title'] . '</a>
+                            </li>';
                         }
                     }
-                    if ($flag) {
-                        if ($val['show_in_menu'] == 0) {
-                            echo '
-                            <li id="menu-item-8287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-depth-0 with-box-shadow  menu-item-simple-parent ">
-                                <a href="' . base_url() . '/danh-muc/' . $val['slug'] . '">' . $val['title'] . '</a>
-                                    <ul class="sub-menu " style="display: none;">
-                                    ';
+                    echo '</ul>
+                    <a class="dt-menu-expand" href="javascript:void(0)">+</a>
+                   </li>';
+                }else{
+                    // echo '<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-depth-0 with-box-shadow  menu-item-simple-parent "><a href="' . base_url() . '/danh-muc/' . $val['slug'] . '">' . $val['title'] . '</a></li>';
+                }
+            }
+            
 
-                            foreach ($base['menu'] as $temp) {
-                                if ($temp['parent_id'] == $val['id']) {
-                                    echo '<li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="' . base_url() . '/danh-muc/' . $temp['slug'] . '">' . $temp['title'] . '</a></li>';
-                                }
-                            }
-                            echo '</ul>
-                                                <a class="dt-menu-expand" href="javascript:void(0)">+</a>
-                                                </li>';
-                        }
-                    } else {
-                        if ($val['show_in_menu'] == 0) {
-                            echo '<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-depth-0 with-box-shadow  menu-item-simple-parent "><a href="' . base_url() . '/danh-muc/' . $val['slug'] . '">' . $val['title'] . '</a></li>';
+            foreach($base['pagecat'] as $val){
+                if(check_child_array_page($val['id'],$base['page'])){
+                    echo '
+                    <li id="menu-item-8287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-depth-0 with-box-shadow  menu-item-simple-parent ">
+                        <a href="#">' . $val['name'] . '</a>
+                    <ul class="sub-menu ">
+                    ';
+                
+                foreach ($base['page'] as $value) {
+                    if ($value['cat_id'] == $val['id']) {
+                            echo '<li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1">
+                            <a href="' . base_url() . '/' . $value['slug'] . '">' . $value['title'] . '</a>
+                            </li>';
                         }
                     }
+                    echo '</ul>
+                    <a class="dt-menu-expand" href="javascript:void(0)">+</a>
+                   </li>';
+                }else{
+                    // echo '<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-depth-0 with-box-shadow  menu-item-simple-parent "><a href="' . base_url() . '/danh-muc/' . $val['slug'] . '">' . $val['title'] . '</a></li>';
                 }
             }
 
-
             ?>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-depth-0 with-box-shadow  menu-item-simple-parent ">
+                <a href="javascript:void(0)" data-toggle="modal"   data-target="#book"> 
+                    <span class="book"><i class="fa fa-calendar" aria-hidden="true"></i>  &nbsp; Đặt lịch khám</span>
+                </a>
+            </li>
         </ul>
     </nav>
 

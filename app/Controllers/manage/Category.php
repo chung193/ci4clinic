@@ -62,8 +62,6 @@ class Category extends BaseController
                 'title'     => $this->request->getPost('title'),
                 'parent_id'     => $this->request->getPost('parent_id'),
                 'slug' => $slug,
-                'content' => $this->request->getPost('content'),
-                'show_in_menu' => $this->request->getPost('show_in_menu')?1:0,
             );
 
             // print_r($data);die();
@@ -128,8 +126,6 @@ class Category extends BaseController
                 'title'  => $this->request->getPost('title'),
                 'parent_id'     => $this->request->getPost('parent_id'), 
                 'slug' => $this->request->getPost('slug'),
-                'content' => $this->request->getPost('content'),
-                'show_in_menu' => $this->request->getPost('show_in_menu')?1:0,
             );
             $model->updateCategory($data, $id);
 

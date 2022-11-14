@@ -3,6 +3,7 @@
 use CodeIgniter\Controller;
 use App\Models\manage\Page_model;
 use App\Models\manage\Seo_model;
+use App\Models\manage\PageCat_model;
 
 class Page extends BaseController
 {
@@ -32,9 +33,11 @@ class Page extends BaseController
     public function add()
     {
         $session = session();
+        $model = new PageCat_model();
         $data['test'] = array(
             'subview'   => '/manage/contents/page/add_page_view',
             'title'     => "Thêm trang",
+            'pagecat' => $model->getpagecat(),
             'name'      => $session->get('user_name')
         );
         echo view('manage/layout',$data);
@@ -43,11 +46,29 @@ class Page extends BaseController
     public function save()
     {
         $rules = [
-            'title'      => ['label' => 'Tiêu đề','rules' =>'required|min_length[3]|max_length[600]'],
-            'description'=> ['label' => 'Nội dung', 'rules' => 'required|min_length[6]|max_length[200]'],
+            'title'      => ['label' => 'Tiêu đề','rules' =>'required|max_length[600]'],
+            'description'=> ['label' => 'Nội dung', 'rules' => 'required|max_length[200]'],
+            'img' => [
+                'label' => 'file ảnh',
+                'rules' => 'is_image[img]'
+                    . '|mime_in[img,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                    . '|max_size[img,102400]'
+                    . '|max_dims[img,204800, 204800]',
+            ],
         ];
          
+        // print_r($this->request); die();
         if($this->validate($rules)){
+            if($this->request->getFile('img') !== ""){
+                $img = $this->request->getFile('img');
+                $basename = 'default.jpg';
+                if ($img->isValid() && !$img->hasMoved()) {
+                    $img->move(ROOTPATH.'/public/uploads/page/');
+                    $basename = $img->getName();
+                }
+            }else{
+                $basename = 'default.jpg';
+            }
             $model = new Page_model();
             $now = date('Y-m-d H:i:s');
             $session = session();
@@ -71,6 +92,7 @@ class Page extends BaseController
             $data = array(
                 'title'  => $this->request->getPost('title'),
                 'description' => $this->request->getPost('description'),
+                'cat_id' => $this->request->getPost('cat_id'),
                 'authorid' => $session->get('user_id'),
                 'slug' => $slug,
                 'content' => $this->request->getPost('content'),
@@ -78,6 +100,7 @@ class Page extends BaseController
                 'publishat' => $published?$now:0,
                 'createdat' => $now,
                 'updateat' => $now,
+                'img' => $basename
             );
             $model->savePage($data);
             // thêm mới data seo
@@ -100,6 +123,7 @@ class Page extends BaseController
     public function edit($id)
     {
         $model = new Page_model();
+        $cat = new PageCat_model();
         $data['page'] = $model->getPage($id)->getRow();
         $seo = $this->getSeoContent($id, 'page')->getRow();
         $session = session();
@@ -107,6 +131,7 @@ class Page extends BaseController
             'subview'   => '/manage/contents/page/edit_page_view',
             'title'     => "Sửa trang",
             'seo' => $seo,
+            'pagecat' => $cat->getpagecat(),
             'name'      => $session->get('user_name')
         );
         echo view('manage/layout',$data);
@@ -117,9 +142,27 @@ class Page extends BaseController
         $rules = [
             'title'      => ['label' => 'Tiêu đề','rules' =>'required|min_length[3]|max_length[600]'],
             'description'=> ['label' => 'Nội dung', 'rules' => 'required|min_length[6]|max_length[200]'],
+            'img' => [
+                'label' => 'file ảnh',
+                'rules' => 'is_image[img]'
+                    . '|mime_in[img,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                    . '|max_size[img,102400]'
+                    . '|max_dims[img,204800, 204800]',
+            ],
         ];
         $id = $this->request->getPost('id');
         if($this->validate($rules)){
+
+            if($this->request->getFile('image') !== ""){
+                $img = $this->request->getFile('image');
+                $basename = 'default.jpg';
+                if ($img->isValid() && !$img->hasMoved()) {
+                    $img->move(ROOTPATH.'/public/uploads/page/');
+                    $basename = $img->getName();
+                }
+            }else{
+                $basename = 'default.jpg';
+            }
             $model = new Page_model();
             $now = date('Y-m-d H:i:s');
             $session = session();
@@ -137,12 +180,14 @@ class Page extends BaseController
             $data = array(
                 'title'  => $this->request->getPost('title'),
                 'description' => $this->request->getPost('description'),
+                'cat_id' => $this->request->getPost('cat_id'),
                 'slug' => $slug,
                 'content' => $this->request->getPost('content'),
                 'published' => $published ,
                 'publishat' => $published?$now:0,
                 'createdat' => $now,
                 'updateat' => $now,
+                'img' => $basename
             );
             $model->updatePage($data, $id);
 

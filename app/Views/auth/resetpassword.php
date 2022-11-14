@@ -17,7 +17,7 @@
   <body class="hold-transition login-page">
   <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Mac</b>Store</a>
+    <a href="#"><b>Quản trị </b>Nội dung</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

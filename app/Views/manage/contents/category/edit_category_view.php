@@ -53,29 +53,6 @@
             <input type="text" class="form-control" name="slug" value="<?php echo $category->slug ?>" placeholder="slug">
         </div>
 
-        <div class="form-check form-switch">
-            <input class="form-check-input" name="show_in_menu" type="checkbox" id="flexSwitchCheckChecked" value="1"
-            <?php 
-              if($category->show_in_menu){
-                echo 'checked';
-              }else{
-                
-              }
-            ?>
-             
-            >
-            <label class="form-check-label" for="flexSwitchCheckChecked">Hiện trên menu</label>
-            <p>(Hiện các bài viết trong danh mục này trên menu)</p>
-        </div>
-
-
-        <div class="mb-3">
-            <label for="title" class="form-label">Nội dung</label>
-            <textarea class="form-control" name="content" placeholder="Nội dung" rows="3"><?php echo $category->content ?></textarea>
-        </div>
-
-
-
         <button type="submit"  class="btn btn-primary">Lưu lại</button>
     
     </div>

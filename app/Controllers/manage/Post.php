@@ -13,8 +13,6 @@ class Post extends BaseController
         $data['post'] = $model->getPost();
         $data['countpost'] = $model->countAll();
         $data['postpublic'] = $model->getPostPublish();
-        // print_r($data['postpublic']);
-        // die();
         $data['countpostpublic'] = $model->getCountPostPublish();
         $data['postdraft'] = $model->getPostDraft();
         $data['countpostdraft'] = $model->getCountPostDraft();
@@ -47,7 +45,6 @@ class Post extends BaseController
         $rules = [
             'title'      => ['label' => 'Tiêu đề','rules' =>'required|min_length[3]|max_length[600]'],
             'parentid'   => ['label' => 'Danh mục','rules' =>'required|numeric'],
-            'description'=> ['label' => 'Mô tả','rules' =>'required|min_length[6]'],
             'slug'       => ['label' => 'Slug ','rules' => 'max_length[255]|is_unique[post.slug]'],
             'content'       => ['label' => 'Nội dung','rules' =>'required'],
             'img' => [
@@ -147,7 +144,6 @@ class Post extends BaseController
         $rules = [
             'title'      => ['label' => 'Tiêu đề','rules' =>'required|min_length[3]|max_length[600]'],
             'parentid'   => ['label' => 'Danh mục','rules' =>'required|numeric'],
-            'description'=> ['label' => 'Mô tả','rules' =>'required|min_length[6]'],
             'slug'       => ['label' => 'Slug ','rules' => 'max_length[255]|is_unique[post.slug,id,{id}]'],
             'content'       => ['label' => 'Nội dung','rules' =>'required'],
         ];

@@ -55,7 +55,7 @@
             <div class="column dt-sc-one-third first" style="position: absolute; left: 0px; top: 0px;">
                <article id="post-1" class="blog-entry entry-default post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-news category-technical tag-blog">
 
-                  <div class="entry-thumb">
+                  <div class="entry-thumb" >
                      <a href="<?= base_url() . '/bai-viet/' . $val['slug'] ?>" title="<?= $val['title'] ?>">
                      <img width="1170" height="795" src="<?= base_url() . '/public/uploads/post/' . $val['img'] ?>" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="<?= base_url() . '/public/uploads/post/' . $val['img'] ?> 1170w, <?= base_url() . '/public/uploads/post/' . $val['img'] ?> 300w, <?= base_url() . '/public/uploads/post/' . $val['img'] ?> 1024w" sizes="(max-width: 1170px) 100vw, 1170px"></a>
                      <div class="entry-format hidden">
