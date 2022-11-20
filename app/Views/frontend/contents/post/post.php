@@ -59,7 +59,7 @@
                   <?= $post->content ?>
                   <?php echo view('frontend/component/share');?>
                   <div class="fb-share-button" data-href="<?= base_url() . '/bai-viet/' . $post->slug ?>" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-                  <div class="fb-comments" data-href="<?= base_url() . '/bai-viet/' . $post->slug ?>" data-width="" data-numposts="5"></div>
+                  <div class="fb-comments" data-href="<?= base_url() . '/bai-viet/' . $post->slug ?>" data-width="100%" data-numposts="5"></div>
                </div>
 
 

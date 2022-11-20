@@ -38,6 +38,7 @@ class Post extends BaseController
             'category' => $category_md->getCategory(),
             'post' => $post_md->getPost(),
             'page' => $page_md->getPage(),
+            'pagefooter' => $page_md->getPageByCat(1),
             'pagecat' => $pagecat_md->getpagecat(),
             'menu' => $category_md->getCategory(),
             'banner' => $banner_md->getbanner(),

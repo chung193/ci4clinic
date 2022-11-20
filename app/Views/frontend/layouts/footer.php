@@ -27,17 +27,28 @@
           <div class="textwidget">
             <div class="column dt-sc-one-half first">
               <ul class="footer-bullet-list">
-                <li><a href="<?= base_url() . '/gioi-thieu' ?>">Về chúng tôi</a></li>
-                <li><a href="<?= base_url() . '/lien-he' ?>">Liên hệ</a></li>
-                <li><a href="<?= base_url() . '/chinh-sach-doi-tra' ?>">Chính sách đổi trả</a></li>
-                <li><a href="<?= base_url() . '/huong-dan-dat-hang' ?>">Hướng dẫn đặt hàng</a></li>
+                <?php 
+                  foreach($base['pagefooter'] as $val){
+                    ?>
+                    <li><a href="<?= base_url() . '/'.$val['slug'] ?>"><?= $val['title'] ?></a></li>
+                    <?php
+                  }
+                ?>
+                
               </ul>
             </div>
             <div class="column dt-sc-one-half">
               <ul class="footer-bullet-list">
-                <li><a href="<?= base_url() . '/danh-muc/tin-cong-nghe' ?>"> Tin công nghệ</a></li>
-                <li><a href="<?= base_url() . '/danh-muc/tuyen-dung' ?>">Tuyển dụng</a></li>
-                <li><a href="<?= base_url() . '/khuyen-mai' ?>"> Khuyến mại</a></li>
+                <?php 
+                $i = 0;
+                  foreach($base['category'] as $val){
+                    if($val['parent_id'] != 0 && $i < 4){
+                    ?>
+                    <li><a href="<?= base_url() . '/danh-muc/'.$val['slug'] ?>"><?= $val['title'] ?></a></li>
+                    <?php } $i++;
+                  }
+                ?>
+                
               </ul>
             </div>
           </div>
@@ -76,12 +87,14 @@
     </div>
   </div> -->
 
+<br/>
   <div class="footer-copyright dt-sc-dark-bg">
     <div class="container">
       <div class="vc-no-left-padding wpb_column vc_column_container vc_col-sm-6">
         <div class="vc_column-inner ">
           <div class="wpb_wrapper">
-            <div class="dt-sc-hr-top-5 "> </div>Copyright © 2022
+            <div class="dt-sc-hr-top-5 "> 
+            </div>Copyright © 2022
 
             Bsi Chính | <a target="_blank" title="" href="https://themeforest.net/user/designthemes"> Design </a>
           </div>

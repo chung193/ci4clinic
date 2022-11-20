@@ -230,8 +230,14 @@
 <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/js_composer_front.min.js" id="wpb_composer_front_js-js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/vc-waypoints.min.js" id="vc_waypoints-js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/public/frontend/template/css/vhparallax.min.js" id="jquery.vhparallax-js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+<script src="<?= base_url() ?>/public/frontend/template/toastr.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"></script>
+
 <a href="https://dtdental.wpengine.com/home-page-1-2/#" id="toTop" style="display: inline;"><span id="toTopHover"></span>To Top</a>
 <div id="lbdictex_find_popup" class="lbexpopup hidden" style="position: absolute; top: 0px; left: 0px;">
    <div class="lbexpopup_top">
@@ -247,6 +253,8 @@
 <div id="lbdictex_ask_mark" class="hidden" style="position: absolute; top: 0px; left: 0px;">
    <a class="lbdictex_ask_select" href="https://dtdental.wpengine.com/home-page-1-2/#">&nbsp;</a>
 </div>
+
+
 <script type="text/javascript">
    jQuery(document).ready(function($) {
       if (typeof jQuery('.ult-carousel').slick == "function") {
@@ -381,4 +389,20 @@
    for (var i = 0; i < x.length; i++) {
       x[i].innerText = "Mục lục"; // Change the content
    }
+</script>
+
+<script>
+   <?php 
+   $session = session();
+   $toastr = $session->get('msg');
+   $toastrErr = $session->get('msgErr');
+   if($toastr){
+      echo "toastr.info('Yêu cầu của bạn đã được gửi đi')";
+   }
+
+   if($toastrErr){
+      echo "toastr.error('.$toastrErr.')";
+   }
+   ?>
+
 </script>

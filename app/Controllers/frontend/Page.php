@@ -37,6 +37,7 @@ class Page extends BaseController
             'slider' => $slider_md->getSlider(),
             'category' => $category_md->getCategory(),
             'post' => $post_md->getPost(),
+            'pagefooter' => $page_md->getPageByCat(1),
             'page' => $page_md->getPage(),
             'pagecat' => $pagecat_md->getpagecat(),
             'menu' => $category_md->getCategory(),

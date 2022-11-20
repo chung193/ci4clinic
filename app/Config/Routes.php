@@ -56,6 +56,11 @@ $routes->group('manage', ['filter' => 'auth'], function ($routes) {
     $routes->get('crawl/post', 'manage/Crawl::post');
     $routes->post('crawl/post', 'manage/Crawl::post');
 
+    // book
+    $routes->get('sub', 'manage\Sub::index');
+     // book
+     $routes->get('book', 'manage\Book::index');
+
     // location
     $routes->get('location', 'manage\Location::index');
 
@@ -100,6 +105,20 @@ $routes->group('manage', ['filter' => 'auth'], function ($routes) {
 });
 
 $routes->group('manage', ['filter' => 'role'], function ($routes) {
+
+    // sub
+    $routes->add('sub/edit/(:num)', 'manage\Sub::edit/$1');
+    $routes->get('sub/add', 'manage\Sub::add');
+    $routes->post('sub/save', 'manage\Sub::save');
+    $routes->post('sub/update', 'manage\Sub::update');
+    $routes->get('sub/delete/(:num)', 'manage\Sub::delete/$1');
+    
+    // book
+    $routes->add('book/edit/(:num)', 'manage\Book::edit/$1');
+    $routes->get('book/add', 'manage\Book::add');
+    $routes->post('book/save', 'manage\Book::save');
+    $routes->post('book/update', 'manage\Book::update');
+    $routes->get('book/delete/(:num)', 'manage\Book::delete/$1');
 
     // location
     $routes->add('pagecat/edit/(:num)', 'manage\PageCat::edit/$1');

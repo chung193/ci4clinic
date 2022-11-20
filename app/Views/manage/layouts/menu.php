@@ -138,6 +138,8 @@
             </ul>
           </li>
 
+          
+
           <li class="nav-item">
             <a href="<?php echo base_url()?>/manage/ui" class="nav-link">
               <i class="nav-icon  fas fa-image"></i>
@@ -181,13 +183,41 @@
             </ul>
           </li>
 
-          
+          <li class="nav-item">
+            <a href="<?php echo base_url()?>/manage/book" class="nav-link">
+              <i class="nav-icon fas fa-info"></i>
+              <p>
+                Lịch hẹn
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url()?>/manage/sub" class="nav-link">
+              <i class="nav-icon fas fa-envelope "></i>
+              <p>
+                Đăng ký
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item">
             <a href="<?php echo base_url()?>/manage/info" class="nav-link">
               <i class="nav-icon fas fa-info"></i>
               <p>
                 Thông tin phòng khám
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url()?>/manage/location" class="nav-link">
+              <i class="nav-icon fas fa-map"></i>
+              <p>
+                Các chi nhánh
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>

@@ -20,4 +20,13 @@ class Page_model extends Model
         return $query->getRow();
     }
 
+    public function getPageByCat($id){
+        $db      = \Config\Database::connect();
+        $builder = $db->table('page');
+        $builder->join('pagecat', 'pagecat.id = page.cat_id');
+        $builder->where('pagecat.id', $id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
 }

@@ -21,7 +21,7 @@ class Sub extends BaseController
             return redirect()->back();
         }else{
             $session = session();
-            $session->setFlashdata('msg', $this->validator->listErrors());
+            $session->setFlashdata('msgErr', $this->validator->listErrors());
             return redirect()->back();
         }
     }

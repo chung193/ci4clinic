@@ -141,14 +141,6 @@ class Page extends BaseController
     {
         $rules = [
             'title'      => ['label' => 'Tiêu đề','rules' =>'required|min_length[3]|max_length[600]'],
-            'description'=> ['label' => 'Nội dung', 'rules' => 'required|min_length[6]|max_length[200]'],
-            'img' => [
-                'label' => 'file ảnh',
-                'rules' => 'is_image[img]'
-                    . '|mime_in[img,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                    . '|max_size[img,102400]'
-                    . '|max_dims[img,204800, 204800]',
-            ],
         ];
         $id = $this->request->getPost('id');
         if($this->validate($rules)){
